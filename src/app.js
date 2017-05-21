@@ -8,13 +8,13 @@ import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
-import reducers from './reducers/index';
 
-import LoginPage from './components/LoginPage';
+import store from './store';
+
+import LoginPage from './containers/LoginPage';
 import Main from './main';
 
 const middleware = applyMiddleware(thunk, logger);
-const store = createStore(reducers, middleware);
 
 const Routes = (
   <Provider store={store}>

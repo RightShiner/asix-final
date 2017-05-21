@@ -1,13 +1,27 @@
 import React from 'react';
-import LoginPage from './components/LoginPage';
+import LoginPageLayout from '../components/LoginPageLayout';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as LoginPageActions from '../actions/LoginPageActions';
 
 class LoginPage extends React.Component {
   render() {
     return(
-      <LoginPage />
+      <LoginPageLayout {...this.props} />
     )
   }
 }
 
-export default LoginPage;
 
+const mapStateToProps = (state) =>({
+  user: state.loginPage.user,
+  pass: state.loginPage.pass,
+});
+
+const mapDispatchToProps = (dispatch) =>({
+  ...bindActionCreators({
+    ...LoginPageActions,
+  },dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

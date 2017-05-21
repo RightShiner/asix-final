@@ -24,7 +24,7 @@ run:
 
 stop:
 	@echo "Stopping frontend! 🍺";
-	@$(DOCKER) stop;
+	@$(DOCKER) down;
 	@echo "Done! ✅";
 
 coffee:
