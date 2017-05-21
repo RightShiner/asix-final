@@ -1,0 +1,13 @@
+version: '2'
+services:
+  node-server:
+    build: .
+    ports:
+      - "8000:8000"
+    networks:
+      - default
+    volumes:
+      - .:/usr/src/app/:rw
+      - vendor:/usr/src/app/node_modules
+volumes:
+  vendor:
