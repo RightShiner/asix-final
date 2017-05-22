@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/ASIX-ALS/asix-final-project-frontend#readme",
   "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^7.0.1",
     "express": "^4.15.3",
-    "webpack": "^2.5.1",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "webpack": "^2.5.1"
   },
   "dependencies": {
     "axios": "^0.16.1",
