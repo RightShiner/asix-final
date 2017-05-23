@@ -1,0 +1,38 @@
+$colors: (
+  'primary': (
+    'base': rgba(33, 95, 173, 1),
+    'light': rgba(73, 124, 187, 1),
+    'dark': rgba(28, 78, 142, 1)
+  ),
+  'accent': (
+    'base': rgba(241, 143, 1, 1),
+    'light': rgba(243, 163, 47, 1),
+    'dark': rgba(198, 118, 1, 1)
+  ),
+  'secondary': (
+    'base': #D6D6D6,
+    'light': #DDDDDD,
+    'dark': #B0B0B0
+  ),
+  'foreground': (
+    'base': rgba(153, 194, 77, 1),
+    'light': rgba(171, 205, 109, 1),
+    'dark': rgba(126, 159, 64, 1)
+  ),
+  'background': (
+    'base': rgba(65, 187, 217, 1),
+    'light': rgba(99, 199, 223, 1),
+    'dark': rgba(54, 154, 178, 1)
+  )
+);
+
+@function color($color, $modifier) {
+    @if map-has-key($colors, $color) {
+        @if map-has-key(map-get($colors, $color), $modifier) {
+            @return map-get(map-get($colors, $color), $modifier);
+        }
+    }
+
+    @warn "Unknown `#{$color}-{$modifier}` in $colors.";
+    @return null;
+}
