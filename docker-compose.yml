@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2'
 services:
   node-server:
     build: .
@@ -9,6 +9,5 @@ services:
     volumes:
       - .:/usr/src/app/:rw
       - vendor:/usr/src/app/node_modules
-    command: "${COMMAND-npm run serve}"
 volumes:
   vendor:
