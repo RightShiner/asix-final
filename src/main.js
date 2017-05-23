@@ -1,10 +1,10 @@
-"use strict"
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Main extends React.Component {
 
   render() {
-    return(
+    return (
       <div>
         {this.props.children}
       </div>
@@ -12,6 +12,8 @@ class Main extends React.Component {
   }
 }
 
-
+Main.propTypes = {
+  children: PropTypes.object.isRequired,
+};
 
 export default Main;

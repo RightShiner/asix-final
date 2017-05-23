@@ -1,6 +1,6 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const webpack = require('webpack');
 
 module.exports = {
   entry: './src/app.js',
@@ -16,9 +16,16 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015', 'stage-0']
+          presets: [ 'react', 'es2015', 'stage-0' ]
         }
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
       }
     ]
-  }
-}
+  },
+  plugins: [
+    new ExtractTextPlugin('main.css')
+  ]
+};
