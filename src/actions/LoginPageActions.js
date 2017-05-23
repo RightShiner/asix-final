@@ -1,15 +1,14 @@
-"use strict"
 import axios from 'axios';
 
 export function getUser(username, password) {
-  return function(dispatch){
+  return function (dispatch) {
     axios.get('http://localhost:3000/api/login/user', {
       params: {
-        username: username,
-        password: password
+        username,
+        password,
       }
     })
-      .then(function(response){
+      .then((response) => {
         console.log(response.data);
         return dispatch({
           type: 'LOGIN_SUCCESS',
@@ -17,52 +16,52 @@ export function getUser(username, password) {
           pass: response.data.pass,
         });
       })
-      .catch(function(err){
+      .catch((err) => {
         dispatch({
           type: 'LOGIN_FAILED',
           payload: err,
-        })
-      })
-  }
+        });
+      });
+  };
 }
 
 export function setUser(username, password) {
-  return function(dispatch){
-    const user = [{
-      username: username,
-      password: password
-    }]
+  return function (dispatch) {
+    const user = {
+      username,
+      password
+    };
     axios.post('http://localhost:3000/api/register/user', user)
-      .then(function(response){
-        return dispatch({
+      .then((response) => {
+        dispatch({
           type: 'SIGNUP_SUCCESS',
           user: response.data.user,
           pass: response.data.pass,
         });
       })
-      .catch(function(err){
+      .catch((err) => {
         dispatch({
           type: 'SIGNUP_FAILED',
           payload: err,
-        })
-      })
-  }
+        });
+      });
+  };
 }
 
 export function onChangeUser(user) {
-  return(dispatch) => {
+  return (dispatch) => {
     dispatch({
       type: 'CHANGE_USER',
       user,
-    })
-  }
+    });
+  };
 }
 
 export function onChangePass(pass) {
-  return(dispatch) => {
+  return (dispatch) => {
     dispatch({
       type: 'CHANGE_PASS',
       pass,
-    })
-  }
+    });
+  };
 }

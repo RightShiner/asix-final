@@ -53,7 +53,7 @@ LoginPage.propTypes = {
   onChangePass: PropTypes.onChangePass.func.isRequired,
   onChangeUser: PropTypes.onChangeUser.func.isRequired,
   user: PropTypes.user.string.isRequired,
-  pass: PropTypes.pass.string.isRequired
+  pass: PropTypes.pass.string.isRequired,
 };
 
 export default LoginPage;

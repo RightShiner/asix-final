@@ -23065,12 +23065,12 @@ function getUser(username, password) {
 
 function setUser(username, password) {
   return function (dispatch) {
-    var user = [{
+    var user = {
       username: username,
       password: password
-    }];
+    };
     _axios2.default.post('http://localhost:3000/api/register/user', user).then(function (response) {
-      return dispatch({
+      dispatch({
         type: 'SIGNUP_SUCCESS',
         user: response.data.user,
         pass: response.data.pass
