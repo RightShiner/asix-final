@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack-dev-server --content-base src --inline --progress --hot --host 0.0.0.0",
-    "start": "http-server ./build/ -p 8000 --cors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
