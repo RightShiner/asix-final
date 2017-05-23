@@ -2,11 +2,6 @@
   "presets": [
     "es2015",
     "stage-0",
-    "react",
-    "airbnb",
-    "env"
-  ],
-  "plugins": [
-    "transform-class-properties"
+    "react"
   ]
 }
