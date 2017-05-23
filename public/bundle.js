@@ -23252,12 +23252,12 @@ var LoginPage = function LoginPage(props) {
 };
 
 LoginPage.propTypes = {
-  setUser: _propTypes2.default.setUser.func.isRequired,
-  getUser: _propTypes2.default.getUser.func.isRequired,
-  onChangePass: _propTypes2.default.onChangePass.func.isRequired,
-  onChangeUser: _propTypes2.default.onChangeUser.func.isRequired,
-  user: _propTypes2.default.user.string.isRequired,
-  pass: _propTypes2.default.pass.string.isRequired
+  setUser: _propTypes2.default.func.isRequired,
+  getUser: _propTypes2.default.func.isRequired,
+  onChangePass: _propTypes2.default.func.isRequired,
+  onChangeUser: _propTypes2.default.func.isRequired,
+  user: _propTypes2.default.string.isRequired,
+  pass: _propTypes2.default.string.isRequired
 };
 
 exports.default = LoginPage;

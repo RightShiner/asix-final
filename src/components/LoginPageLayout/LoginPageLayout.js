@@ -48,12 +48,12 @@ const LoginPage = (props) => (
 );
 
 LoginPage.propTypes = {
-  setUser: PropTypes.setUser.func.isRequired,
-  getUser: PropTypes.getUser.func.isRequired,
-  onChangePass: PropTypes.onChangePass.func.isRequired,
-  onChangeUser: PropTypes.onChangeUser.func.isRequired,
-  user: PropTypes.user.string.isRequired,
-  pass: PropTypes.pass.string.isRequired,
+  setUser: PropTypes.func.isRequired,
+  getUser: PropTypes.func.isRequired,
+  onChangePass: PropTypes.func.isRequired,
+  onChangeUser: PropTypes.func.isRequired,
+  user: PropTypes.string.isRequired,
+  pass: PropTypes.string.isRequired,
 };
 
 export default LoginPage;
