@@ -1,31 +1,187 @@
+const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
-  entry: './src/app.js',
+  entry: [
+    './src/app.js',
+  ],
   output: {
+    path: __dirname + '/public',
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    publicPath: '/'
   },
-  watch: true,
+  resolve: {
+    modules: [
+      path.join(__dirname, './src'),
+      'node_modules'
+    ],
+    extensions: ['.js', '.jsx', '.css', '.scss']
+  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: [ 'react', 'es2015', 'stage-0' ]
-        }
+        enforce: 'pre',
+        use: [{
+          loader: 'eslint-loader',
+          options: {
+            failOnWarning: false,
+            failOnError: true
+          }
+        }],
+        include: [ path.resolve(__dirname, 'src/') ],
+      },
+      {
+        test: /\.js$/,
+        include: [ path.resolve(__dirname, 'src/') ],
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        include: [ path.resolve(__dirname, 'src/') ],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[path]__[local]___[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: 'inline',
+              plugins: () => [
+                require('autoprefixer')
+              ]
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+        include: [ path.resolve(__dirname, 'src/') ],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[path]__[local]___[hash:base64:5]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        include: [
+          path.resolve(__dirname, 'node_modules/'),
+          path.resolve(__dirname, 'src/stylesheets/')
+        ],
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        }),
+      },
+      {
+        test: /\.scss$/,
+        include: [
+          path.resolve(__dirname, 'node_modules/'),
+          path.resolve(__dirname, 'src/stylesheets/')
+        ],
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: 'inline',
+                plugins: () => [
+                  require('autoprefixer')
+                ]
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            }
+          ]
+        }),
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              mimetype: 'application/font-woff'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.svg$/,
+        include: [
+          path.resolve(__dirname, 'src/img/')
+        ],
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1024
+            }
+          }
+        ]
       }
     ]
   },
+  devServer: {
+    stats: 'errors-only',
+  },
+  watchOptions: {
+    poll: 2000,
+  },
   plugins: [
-    new ExtractTextPlugin('main.css')
-  ]
-};
+    new HtmlWebpackPlugin({
+      template: __dirname + '/public/index.html',
+      filename: 'index.html',
+      inject: 'body',
+    }),
+    new WebpackShellPlugin({
+      onBuildStart: ['clear && echo -e "\033[0;32m============= `date`" && echo "\033[0m"'],
+      dev: false
+    }),
+    new ExtractTextPlugin('extractedStyles.css'),
+    new webpack.ProvidePlugin({ jQuery: 'jquery' })
+  ],
+  externals: {
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  }
+}
