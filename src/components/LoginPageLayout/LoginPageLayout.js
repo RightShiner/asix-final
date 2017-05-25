@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
-import styles from './styles.css';
+import styles from './styles.scss';
 
 const LoginPage = (props) => (
   <div className={`container ${styles.wrapper}`}>

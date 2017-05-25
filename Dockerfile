@@ -1,16 +1,19 @@
-FROM node:boron
+FROM node:7.10
 
-# Create app directory
-RUN mkdir -p /usr/src/app
+ARG ENV=development
+ENV NODE_ENV=$ENV
+ENV TERM=xterm
+
 WORKDIR /usr/src/app
+COPY . /usr/src/app/
 
-# Install app dependencies
-COPY package.json /usr/src/app/
-RUN npm install
+ADD docker-files/nginx.conf /etc/nginx/conf.d/default.conf
+VOLUME /etc/nginx/conf.d/
 
-# Bundle app source
-COPY . /usr/src/app
+RUN npm install && npm run build
+VOLUME /usr/src/app/build
 
-EXPOSE 8000
+CMD npm run start
 
-CMD [ "npm", "start" ]
+EXPOSE 80
+
