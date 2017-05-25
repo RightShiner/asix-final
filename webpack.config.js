@@ -10,7 +10,7 @@ module.exports = {
     './src/app.js',
   ],
   output: {
-    path: __dirname + '/public',
+    path: __dirname + '/build',
     filename: 'bundle.js',
     publicPath: '/'
   },
@@ -19,7 +19,10 @@ module.exports = {
       path.join(__dirname, './src'),
       'node_modules'
     ],
-    extensions: ['.js', '.jsx', '.css', '.scss']
+    extensions: ['.js', '.jsx', '.css', '.scss'],
+    alias: {
+        envConstants: path.join(__dirname, 'envConstants', process.env.NODE_ENV)
+    }
   },
   module: {
     rules: [
@@ -169,7 +172,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: __dirname + '/public/index.html',
+      template: __dirname + '/src/index.html',
       filename: 'index.html',
       inject: 'body',
     }),

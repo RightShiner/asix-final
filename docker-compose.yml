@@ -1,13 +1,16 @@
-version: '2'
+version: '2.1'
 services:
   node-server:
     build: .
     ports:
-      - "8000:8000"
+      - "8080:8080"
+    environment:
+      NODE_ENV: development
     networks:
       - default
     volumes:
       - .:/usr/src/app/:rw
-      - vendor:/usr/src/app/node_modules
+      - ./node_modules:/usr/src/app/node_modules
+    command: npm run server
 volumes:
   vendor:
