@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormGroup, Col, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
-import styles from './styles.css';
 
 const SigninPage = (props) => (
-  <div className={`container ${styles.wrapper}`}>
+  <div className="container">
     <Form horizontal>
       <FormGroup controlId="formHorizontalEmail">
         <Col componentClass={ControlLabel} sm={2}>
