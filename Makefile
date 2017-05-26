@@ -1,6 +1,7 @@
 IMAGE = asix-final-project-node-frontend
 DOCKER = docker-compose
 MACHINE = node-server
+FRONTMACHINE = eu.gcr.io/noted-feat-168716/asixfinalprojectfrontend_node-server_1
 
 
 help:
@@ -26,3 +27,9 @@ stop:
 	@echo "Stopping frontend! 🍺";
 	@$(DOCKER) down;
 	@echo "Done! ✅";
+
+deploy-production:
+	@echo "Deploying frontend... (production)";
+	@docker build -t $(FRONTMACHINE):v2 --build-arg ENV=production .
+	@gcloud docker -- push $(FRONTMACHINE):v2;
+	@echo "Done!";

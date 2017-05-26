@@ -1,6 +1,6 @@
 FROM node:7.10
 
-ARG ENV=development
+ARG ENV=production
 ENV NODE_ENV=$ENV
 ENV TERM=xterm
 

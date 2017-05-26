@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_DOMAIN } from '../helpers/apiCredentials';
 
 export function setUser(username, password) {
   return function (dispatch) {
@@ -6,7 +7,7 @@ export function setUser(username, password) {
       username,
       password
     };
-    axios.post('http://localhost:3000/api/register/user', user)
+    axios.post(`${API_DOMAIN}/api/register/user`, user)
       .then((response) => {
         dispatch({
           type: 'SIGNUP_SUCCESS',
