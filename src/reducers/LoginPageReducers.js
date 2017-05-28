@@ -1,38 +1,42 @@
-export function LoginPageReducers(state = { user:'', pass:'' }, action) {
+const initialState = {
+  user: '',
+  pass: '',
+  failed: false,
+  error: '',
+};
+
+export function LoginPageReducers(state = initialState, action) {
   switch (action.type) {
   case 'LOGIN_SUCCESS':
     return {
       ...state,
       user: action.user,
-      pass: action.pass,
     };
   case 'LOGIN_FAILED':
     return {
       ...state,
       user: '',
       pass: '',
+      failed: action.failed,
+      error: action.payload,
     };
-  case 'CHANGE_USER':
+  case 'LOGIN_CHANGE_USER':
     return {
       ...state,
       user: action.user,
+      failed: action.failed,
+      error: '',
     };
-  case 'CHANGE_PASS':
+  case 'LOGIN_CHANGE_PASS':
     return {
       ...state,
       pass: action.pass,
+      failed: action.failed,
+      error: '',
     };
-  case 'SIGNUP_SUCCESS':
+  case 'LOGIN_RESET':
     return {
-      ...state,
-      user: action.user,
-      pass: action.pass,
-    };
-  case 'SIGNUP_FAILED':
-    return {
-      ...state,
-      user: '',
-      pass: '',
+      ...initialState,
     };
   default: return state;
   }

@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Menu from 'components/Menu';
+import Footer from 'components/Footer';
+
 class Main extends React.Component {
 
   render() {
     return (
       <div>
-        {this.props.children}
+        <Menu />
+          {this.props.children}
+        <Footer />
       </div>
     );
   }

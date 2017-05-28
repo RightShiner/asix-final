@@ -4,3 +4,4 @@ src/**/*.css
 bundle.js
 extractedStyles.css
 main.css
+DOCUMENTATION.md

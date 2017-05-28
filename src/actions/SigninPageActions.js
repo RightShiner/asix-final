@@ -1,18 +1,30 @@
 import axios from 'axios';
 import { API_DOMAIN } from '../helpers/apiCredentials';
+import { hashHistory } from 'react-router';
+import trim from 'lodash/trim';
+import isEmpty from 'lodash/isEmpty';
 
 export function setUser(username, password) {
+  if (isEmpty(trim(username)) || isEmpty(trim(password))) {
+    return {
+      type: 'SIGNUP_FAILED',
+      payload: 'campos vacios',
+      failed: true,
+    };
+  }
+
   return function (dispatch) {
     const user = {
       username,
       password
     };
     axios.post(`${API_DOMAIN}/api/register/user`, user)
-      .then((response) => {
-        dispatch({
+      .then(() => {
+        hashHistory.push('/login');
+        return dispatch({
           type: 'SIGNUP_SUCCESS',
-          user: response.data.user,
-          pass: response.data.pass,
+          user: '',
+          pass: ''
         });
       })
       .catch((err) => {
@@ -27,7 +39,8 @@ export function setUser(username, password) {
 export function onChangeUser(user) {
   return (dispatch) => {
     dispatch({
-      type: 'CHANGE_USER',
+      type: 'SIGNUP_CHANGE_USER',
+      failed: false,
       user,
     });
   };
@@ -36,8 +49,13 @@ export function onChangeUser(user) {
 export function onChangePass(pass) {
   return (dispatch) => {
     dispatch({
-      type: 'CHANGE_PASS',
+      type: 'SIGNUP_CHANGE_PASS',
+      failed: false,
       pass,
     });
   };
+}
+
+export function reset() {
+  return { type: 'SIGNUP_RESET' };
 }

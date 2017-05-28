@@ -30,6 +30,6 @@ stop:
 
 deploy-production:
 	@echo "Deploying frontend... (production)";
-	@docker build -t $(FRONTMACHINE):v2 --build-arg ENV=production .
-	@gcloud docker -- push $(FRONTMACHINE):v2;
+	@docker build -t $(FRONTMACHINE):v3 --build-arg ENV=production .
+	@gcloud docker -- push $(FRONTMACHINE):v3;
 	@echo "Done!";
