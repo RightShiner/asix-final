@@ -42,7 +42,7 @@
     "babel-register": "^6.24.1",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
-    "css-loader": "^0.28.0",
+    "css-loader": "^0.28.3",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-loader": "^1.6.0",

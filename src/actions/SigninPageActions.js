@@ -3,7 +3,6 @@ import { API_DOMAIN } from '../helpers/apiCredentials';
 import { hashHistory } from 'react-router';
 import trim from 'lodash/trim';
 import isEmpty from 'lodash/isEmpty';
-import httpConfig from '../helpers/httpConfig';
 
 export function setUser(username, password) {
   if (isEmpty(trim(username)) || isEmpty(trim(password))) {
@@ -13,13 +12,13 @@ export function setUser(username, password) {
       failed: true,
     };
   }
+
   return function (dispatch) {
-    axios.post(
-      `${API_DOMAIN}/api/register/user`,
-      httpConfig({
-        username,
-        password
-      }))
+    const user = {
+      username,
+      password
+    };
+    axios.post(`${API_DOMAIN}/api/register/user`, user)
       .then(() => {
         hashHistory.push('/login');
         return dispatch({

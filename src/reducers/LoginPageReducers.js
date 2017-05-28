@@ -10,7 +10,6 @@ export function LoginPageReducers(state = initialState, action) {
   case 'LOGIN_SUCCESS':
     return {
       ...state,
-      user: action.user,
     };
   case 'LOGIN_FAILED':
     return {

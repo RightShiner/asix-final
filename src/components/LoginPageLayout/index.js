@@ -57,7 +57,7 @@ LoginPage.propTypes = {
   onChangeUser: PropTypes.func.isRequired,
   user: PropTypes.string.isRequired,
   pass: PropTypes.string.isRequired,
-  error: PropTypes.string.isRequired,
+  error: PropTypes.string,
 };
 
 export default LoginPage;

@@ -28,7 +28,6 @@ const PublicationPage = () => (
       label="File"
       help="Example block-level help text here."
     />
-
     <Button>
       Submit
     </Button>

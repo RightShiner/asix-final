@@ -17,24 +17,16 @@ export function getUser(username, password) {
       username,
       password
     };
-    axios.get(`${API_DOMAIN}/api/login/user`, user)
-      .then((response) => {
-        if ('error' === response.data) {
-          return dispatch({
-            type: 'LOGIN_FAILED',
-            payload: 'Login incorrecto',
-            failed: true
-          });
-        }
-        return dispatch({
+    axios.post(`${API_DOMAIN}/api/login/user`, user)
+      .then(() => {
+        dispatch({
           type: 'LOGIN_SUCCESS',
-          user: response.data.user,
         });
       })
-      .catch((err) => {
+      .catch((error) => {
         dispatch({
           type: 'LOGIN_FAILED',
-          payload: err,
+          payload: error.response.data,
         });
       });
   };
