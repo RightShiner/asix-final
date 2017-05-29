@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import { LoginPageReducers } from './LoginPageReducers';
-import { SigninPageReducers } from './SigninPageReducers';
+import { userReducer } from './user-reducer';
+import { notificationReducer } from './notificationReducer';
 
 export default combineReducers({
-  loginPage: LoginPageReducers,
-  signinPage: SigninPageReducers,
+  userState: userReducer,
+  notificationReducer,
 });
 

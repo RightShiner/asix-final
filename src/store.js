@@ -13,6 +13,13 @@ const store = createStore(
   autoRehydrate(),
 );
 
-persistStore(store);
+persistStore(
+  store,
+  {
+    blacklist: [
+      'notificationState',
+    ],
+  }
+);
 
 export default store;

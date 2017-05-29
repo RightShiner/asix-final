@@ -12,8 +12,8 @@ const Menu = () => (
       </Navbar.Brand>
     </Navbar.Header>
     <Nav style={{ float: 'right' }}>
-      <NavItem eventKey={1}><Link to="/login">Login</Link></NavItem>
-      <NavItem eventKey={2}><Link to="/signin">Signin</Link></NavItem>
+      <NavItem eventKey={1} href="#/login">Login</NavItem>
+      <NavItem eventKey={2} href="#/signup">Signin</NavItem>
     </Nav>
   </Navbar>
 );
