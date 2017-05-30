@@ -35,7 +35,10 @@ export default class LoginPage extends React.Component {
       store.dispatch(getUser({
         email: trim(this.state.email),
         password: trim(this.state.password),
-      }));
+      }))
+      .then(() => {
+        this.context.router.push('/');
+      });
       this.setState({
         email: '',
         password: '',

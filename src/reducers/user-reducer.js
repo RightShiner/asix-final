@@ -3,6 +3,8 @@ import * as types from 'actions/action-types';
 import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAILED,
+  GET_USERNAME_SUCCESS,
+  GET_USERNAME_FAILED,
 } from '../actions/LoginPageActions';
 
 const initialState = {
@@ -19,10 +21,15 @@ export function userReducer(state = initialState, action) {
     return {
       ...state,
       id: action.id,
-      username: action.username,
-      email: action.username,
       isLogged: true,
     };
+  case GET_USERNAME_SUCCESS:
+    return {
+      ...state,
+      username: action.username,
+    };
+  case GET_USERNAME_FAILED:
+    return { ...initialState };
   case USER_LOGIN_FAILED:
     return { ...initialState };
   case types.RESET:
