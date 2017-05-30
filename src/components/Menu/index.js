@@ -17,10 +17,13 @@ const MenuLayout = (props) => (
       (props.isLogged) ? (
         <Nav className={styles.navWrapper}>
           <p className={styles.navbarItems}>Bienvenido, {props.username}</p>
-          <a className={`${styles.navbarItems} ${styles.navButton}`} bsStyle="link" onClick={(event) => {
-            event.preventDefault();
-            props.onLogout();
-          }}>
+          <a
+            className={`${styles.navbarItems} ${styles.navButton}`}
+            onClick={(event) => {
+              event.preventDefault();
+              props.onLogout();
+            }}
+          >
             Logout
           </a>
         </Nav>
@@ -38,7 +41,7 @@ const MenuLayout = (props) => (
 MenuLayout.propTypes = {
   username: PropTypes.string,
   isLogged: PropTypes.bool.isRequired,
-  onLogout: PropTypes.function,
+  onLogout: PropTypes.func.isRequired,
 };
 
 export default MenuLayout;
