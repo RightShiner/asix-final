@@ -175,7 +175,7 @@ module.exports = {
       template: __dirname + '/src/index.html',
       filename: 'index.html',
       inject: 'body',
-      favicon: './src/favicon.gif'
+      favicon: './src/favicon.png'
     }),
     new WebpackShellPlugin({
       onBuildStart: ['clear && echo -e "\033[0;32m============= `date`" && echo "\033[0m"'],
