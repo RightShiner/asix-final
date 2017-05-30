@@ -1,0 +1,3 @@
+export const RESET = 'RESET';
+export const ADD_NOTIFICATION = 'ADD_NOTIFICATION';
+export const CLEAR_NOTIFICATION = 'CLEAR_NOTIFICATION';
