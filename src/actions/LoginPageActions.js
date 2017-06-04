@@ -18,7 +18,7 @@ export function getUser(data) {
     };
     return axios.post(`${API_DOMAIN}/api/login/user`, user)
       .then((response) => {
-        dispatch({ type: 'USER_LOGIN_SUCCESS', id: response.data });
+        dispatch({ type: 'USER_LOGIN_SUCCESS', id: response.data.id, username: response.data.username });
       })
       .catch(() => {
         dispatch(notificationAdd({
