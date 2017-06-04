@@ -21,6 +21,7 @@ export function userReducer(state = initialState, action) {
     return {
       ...state,
       id: action.id,
+      username: action.username,
       isLogged: true,
     };
   case GET_USERNAME_SUCCESS:

@@ -182,7 +182,7 @@ module.exports = {
       dev: false
     }),
     new ExtractTextPlugin('extractedStyles.css'),
-    new webpack.ProvidePlugin({ jQuery: 'jquery' })
+    new webpack.ProvidePlugin({ jQuery: 'jquery' }),
   ],
   externals: {
     'react/lib/ExecutionEnvironment': true,
