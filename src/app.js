@@ -13,6 +13,7 @@ import store from './store';
 import LoginPage from './containers/LoginPage';
 import SigninPage from './containers/SigninPage';
 import HomePage from './containers/HomePage';
+import PublicationPage from './containers/PublicationPage';
 import Main from './main';
 
 const Routes = (
@@ -22,6 +23,7 @@ const Routes = (
           <IndexRoute component={HomePage} />
           <Route path="/signup" component={SigninPage} />
           <Route path="/login" component={LoginPage} />
+          <Route path="/publication" component={PublicationPage} />
         </Route>
       </Router>
   </Provider>

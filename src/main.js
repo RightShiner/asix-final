@@ -7,6 +7,7 @@ import * as LoginPageActions from 'actions/LoginPageActions';
 import * as types from 'actions/action-types';
 import Menu from 'components/Menu';
 import Footer from 'components/Footer';
+import PublicationPageLayout from 'components/PublicationPageLayout';
 import NotificationContainer from 'components/Notifications';
 import store from 'store';
 
