@@ -3,8 +3,14 @@
 }
 
 .formWrapper {
-    display: block;
-    padding: 1rem;
-    position: relative;
-    border-radius: 1rem;
+display: block;
+padding: 1rem;
+position: relative;
+border-radius: 1rem;
+}
+
+.formWrapper textarea{
+margin: 0px; 
+width: 927px; 
+height: 124px;
 }
