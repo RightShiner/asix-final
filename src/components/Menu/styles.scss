@@ -10,4 +10,15 @@
 
 .navButton {
   cursor: pointer;
+  color: #337ab7;
+}
+
+:global(.navbar-default) {
+  :global(.container) {
+    width: 100%;
+  }
+}
+
+:global(a) {
+  color: gray;
 }

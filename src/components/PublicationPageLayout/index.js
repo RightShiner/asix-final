@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, FormGroup, Form, FormControl, ControlLabel } from 'react-bootstrap';
+import { Button, Col, FormGroup, Form, FormControl, ControlLabel, textarea } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
 
@@ -26,7 +26,7 @@ const PublicationPage = (props) => (
             Descripción
           </Col>
           <Col sm={10}>
-            <FormControl
+            <textarea
             id="formControlsDescription"
             type="text"
             placeholder="Escribir una descripción"
