@@ -13,7 +13,7 @@ const MenuLayout = (props) => (
   {
     (props.isLogged) ? (
       <span>
-      <span style={{ "margin-right": "1rem" }}>
+      <span style={{ marginRight: '1rem' }}>
       <Link to="/">Inicio</Link>
       </span>
       <span>

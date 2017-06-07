@@ -2,6 +2,7 @@ import * as types from '../actions/action-types';
 import {
   SET_TITLE,
   SET_DESCRIPTION,
+  CLEAR_PUBLICATION
 } from '../actions/PublicationPageActions';
 
 const initialState = {
@@ -30,6 +31,7 @@ export function publicationReducer(state = initialState, action) {
         description: action.description
       }
     };
+  case CLEAR_PUBLICATION:
   case types.RESET:
     return { ...initialState };
   default:

@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import map from 'lodash/map';
 import isEmpty from 'lodash/isEmpty';
 
-import ImageUploader from '../ImageUploader';
 import Card from '../Card';
 
-// import styles from './styles.scss';
+import styles from './styles.scss';
 
 const HomePage = (props) => (
-  <div>
-    <ImageUploader />
-    <div>
+  <div className={styles.body}>
+    <div className={styles.timeline}>
       {
         !isEmpty(props.publications) && (
           map(props.publications, (publication, key) => (
@@ -28,7 +26,7 @@ const HomePage = (props) => (
 
 HomePage.propTypes = {
   user: PropTypes.string,
-  publications: PropTypes.object,
+  publications: PropTypes.array.isRequired,
 };
 
 export default HomePage;

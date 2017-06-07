@@ -9,6 +9,7 @@ import * as LoginPageActions from '../actions/LoginPageActions';
 class HomePage extends React.Component {
   static propTypes = {
     getUsername: PropTypes.func.isRequired,
+    getPublications: PropTypes.func.isRequired,
     isLogged: PropTypes.bool.isRequired,
     id: PropTypes.string,
   };
@@ -17,6 +18,7 @@ class HomePage extends React.Component {
     if (this.props.isLogged) {
       this.props.getUsername(this.props.id);
     }
+    this.props.getPublications();
   }
 
   render() {
@@ -30,6 +32,7 @@ class HomePage extends React.Component {
 const mapStateToProps = (state) => ({
   isLogged: state.userState.isLogged,
   id: state.userState.id,
+  publications: state.homeState.publications,
 });
 
 const mapDispatchToProps = (dispatch) => ({

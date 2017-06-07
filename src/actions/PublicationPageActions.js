@@ -3,12 +3,12 @@ import { API_DOMAIN } from '../helpers/apiCredentials';
 import store from 'store';
 import { notificationAdd } from './NotificationActions';
 import { hashHistory } from 'react-router';
-import * as types from '../actions/action-types';
 
 export const SET_TITLE = 'SET_TITLE';
 export const SET_DESCRIPTION = 'SET_DESCRIPTION';
 export const PUBLICATION_CREATE_SUCCESS = 'PUBLICATION_CREATE_SUCCESS';
 export const PUBLICATION_CREATE_FAILED = 'PUBLICATION_CREATE_FAILED';
+export const CLEAR_PUBLICATION = 'CLEAR_PUBLICATION';
 
 
 export function setTitle(title) {
@@ -25,17 +25,17 @@ export function setDescription(description) {
   };
 }
 
-export function sendPublication() {
+export function sendPublication(image) {
   return function (dispatch) {
     const userId = store.getState().userState.id;
     const publication = {
       title: store.getState().publicationState.publication.title,
       description: store.getState().publicationState.publication.description,
-      userid: userId,
+      user: userId,
+      image: image || '',
     };
     return axios.post(`${API_DOMAIN}/api/new-publication`, publication)
-    .then((response) => {
-      console.log(response);
+    .then(() => {
       dispatch({ type: PUBLICATION_CREATE_SUCCESS });
       hashHistory.push('/');
       dispatch(notificationAdd({
@@ -43,7 +43,7 @@ export function sendPublication() {
         message: 'La publicación se ha realizado correctamente',
         level: 'success',
       }));
-    dispatch({ type: types.RESET });
+      dispatch({ type: CLEAR_PUBLICATION });
     })
     .catch(() => {
       dispatch(notificationAdd({
