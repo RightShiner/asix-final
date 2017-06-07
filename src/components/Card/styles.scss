@@ -1,0 +1,46 @@
+.wrapper {
+    background-color: #fff;
+    border-color: gray;
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+    display: block;
+    height: 900px;
+    margin-bottom: 1rem;
+    margin-left: -1px;
+    margin-right: -1px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    width: 50%;
+    margin-bottom: 60px;
+}
+
+.header {
+      text-align: left;
+      margin-top: 1rem;
+      flex-direction: row;
+      height: 60px;
+      padding: 16px;
+      border-bottom: 1px solid #e6e6e6;
+}
+
+.nombre {
+    text-align: left;
+    margin-left: 3rem;
+}
+
+.date {
+    text-align: left;
+    margin-left: 3rem;
+}
+
+.description {
+    text-align: left;
+    margin-left: 3rem;
+    margin-top: 25rem;
+}
+
+.image {
+  width: 600;
+  height: 651;
+}
