@@ -12,7 +12,7 @@ const Card = (props) => (
       <img className={styles.image} src={props.publication.image} alt={props.publication.title} />
     </div>
     <div className={styles.description}>
-      <h1>{ props.publication.title }</h1>
+      <h1 className={styles.title}>{ props.publication.title }</h1>
       <p><b>{props.publication.user.username}</b>{` ${props.publication.description}`}</p>
     </div>
     <div className={styles.date}>
