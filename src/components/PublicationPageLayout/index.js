@@ -20,7 +20,7 @@ class PublicationPage extends React.Component {
   }
 
   publish() {
-    if ('undefined' !== typeof this.data_uri) {
+    if ('undefined' !== typeof this.state.data_uri) {
       this.setState({
         processing: true
       });
@@ -38,7 +38,7 @@ class PublicationPage extends React.Component {
       promise.then(() => {
         this.setState({
           processing: false,
-          uploaded_uri: `alsbuckets3.s3.amazonaws.com/${this.state.filename}`
+          uploaded_uri: `https://alsbuckets3.s3.amazonaws.com/${this.state.filename}`
         });
         this.props.sendPublication(this.state.uploaded_uri);
       });
