@@ -26,7 +26,7 @@ export function getUser(data) {
           message: 'intentelo de nuevo más tarde',
           level: 'error',
         }));
-        return dispatch({ type: 'USER_LOGIN_FAILED' });
+        dispatch({ type: 'USER_LOGIN_FAILED' });
       });
   };
 }

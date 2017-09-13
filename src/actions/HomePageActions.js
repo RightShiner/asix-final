@@ -7,7 +7,6 @@ export const FETCH_PUBLICATIONS_FAILED = 'FETCH_PUBLICATIONS_FAILED';
 import { API_DOMAIN } from '../helpers/apiCredentials';
 
 export function getPublications() {
-  console.log();
   return (dispatch) => {
     dispatch({ type: FETCH_PUBLICATIONS_REQUEST });
     return axios.get(`${API_DOMAIN}/api/publications`)

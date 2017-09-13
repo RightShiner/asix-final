@@ -37,11 +37,6 @@ export default class SignupPage extends React.Component {
         password: trim(this.state.password),
       }))
       .then(() => {
-        store.dispatch(notificationAdd({
-          title: 'Registro correcto',
-          message: 'usuario registrado correctamente',
-          level: 'success',
-        }));
         this.context.router.push('/login');
       });
     } else {

@@ -38,7 +38,7 @@ class PublicationPage extends React.Component {
       promise.then(() => {
         this.setState({
           processing: false,
-          uploaded_uri: `https://alsbuckets3.s3.amazonaws.com/${this.state.filename}`
+          uploaded_uri: `https://s3.eu-west-2.amazonaws.com/asixfinalbucket/${this.state.filename}`
         });
         this.props.sendPublication(this.state.uploaded_uri);
       });
